@@ -1,0 +1,11 @@
+version: 0.1
+python: 3.6
+entrypoint: python runway_model.py
+cuda: 9.2
+spec:
+    cpu: False
+    gpu: True    
+build_steps:
+    - pip install runway-python torch==1.5 torchvision==0.6 cython pyyaml==5.1 dominate==2.4.0 detectron2==0.1.2
+    - if_cpu: pip install tensorflow
+    - if_gpu: pip install tensorflow-gpu==1.15

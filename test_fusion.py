@@ -20,7 +20,7 @@ multiprocessing.set_start_method('spawn', True)
 
 torch.backends.cudnn.benchmark = True
 
-if __name__ == '__main__':
+def calc_colors():
     opt = TestOptions().parse()
     save_img_path = opt.results_img_dir
     if os.path.isdir(save_img_path) is False:
@@ -57,5 +57,7 @@ if __name__ == '__main__':
             count_empty += 1
             full_img_data = util.get_colorization_data(data_raw['full_img'], opt, ab_thresh=0, p=opt.sample_p)
             model.set_forward_without_box(full_img_data)
-        model.save_current_imgs(join(save_img_path, data_raw['file_id'][0] + '.png'))
+        specific_file_save_path = join(save_img_path, data_raw['file_id'][0] + '.png')
+        model.save_current_imgs(specific_file_save_path)
     print('{0} images without bounding boxes'.format(count_empty))
+    return specific_file_save_path
