@@ -13,6 +13,3 @@ build_steps:
     - pip install dominate==2.4.0
     - pip install detectron2==0.1.2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/index.html
     - pip install ipython
-
-
-    
